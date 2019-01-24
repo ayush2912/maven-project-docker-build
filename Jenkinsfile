@@ -16,9 +16,9 @@ pipeline{
 				success{
 					echo 'Application Docker image built Successfully!'
 					echo 'Starting Docker Container'
-					sh "docker run -d -p 9${env.BUILD_ID}9${env.BUILD_ID}:8080 tomcatwebapp:${env.BUILD_ID}"
-					echo "Docker Container started successfully at port : 8${env.BUILD_ID}8${env.BUILD_ID}"
 					echo '9"${env.BUILD_ID}-1"9"${env.BUILD_ID}-1"'
+					sh "docker run -d -p ${env.BUILD_ID}${env.BUILD_ID}:8080 tomcatwebapp:${env.BUILD_ID}"
+					echo "Docker Container started successfully at port : 8${env.BUILD_ID}8${env.BUILD_ID}"
 				}
 				failure{
 					echo 'Deployment Failed!'
