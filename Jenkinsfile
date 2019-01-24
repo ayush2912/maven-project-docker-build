@@ -15,9 +15,13 @@ pipeline{
 			post{
 				success{
 					echo 'Application Docker image built Successfully!'
+
+					echo 'Deleting Old Docker container...'
+					sudo docker rm -f $(sudo docker ps -aq -f name=tomcatwebapp)
+					echo 'Old Docker container Deleted successfully'
+
 					echo 'Starting Docker Container'
-					echo "8`expr ${env.BUILD_ID} - 1`8`expr ${env.BUILD_ID} - 1`"
-					sh "docker run -d -p ${env.BUILD_ID}${env.BUILD_ID}:8080 tomcatwebapp:${env.BUILD_ID}"
+					sh "docker run --name tomcatwebapp -d -p 8181:8080 tomcatwebapp:${env.BUILD_ID}"
 					echo "Docker Container started successfully at port : 8${env.BUILD_ID}8${env.BUILD_ID}"
 				}
 				failure{
