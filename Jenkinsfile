@@ -14,7 +14,9 @@ pipeline{
 			}
 			post{
 				success{
-					echo 'Code Deployed Successfully!'
+					echo 'Application Docker image built Successfully!'
+					echo 'Application Docker image built Successfully!'
+					sh "sudo docker run -d -p 8181:8080 tomcatwebapp:${env.BUILD_ID}"
 				}
 				failure{
 					echo 'Deployment Failed!'
