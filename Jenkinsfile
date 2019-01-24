@@ -5,6 +5,10 @@ pipeline{
 		maven 'LOCAL_MAVEN'
 	}
 
+	parameters{
+		 string(name:'tomcatwebapp_port', defaultValue:'8181', description:'Tomcat WebApp Port')
+	}
+
 	stages{
 
 		stage('Build'){
@@ -21,8 +25,8 @@ pipeline{
 					echo 'Old Docker container Deleted successfully'
 
 					echo 'Starting Docker Container'
-					sh "docker run --name tomcatwebapp -d -p 8181:8080 tomcatwebapp:${env.BUILD_ID}"
-					echo "Docker Container started successfully at port : 8${env.BUILD_ID}8${env.BUILD_ID}"
+					sh "docker run --name tomcatwebapp -d -p ${params.tomcatwebapp_port}:8080 tomcatwebapp:${env.BUILD_ID}"
+					echo "Docker Container started successfully at port : ${params.tomcatwebapp_port}"
 				}
 				failure{
 					echo 'Deployment Failed!'
