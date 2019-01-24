@@ -1,2 +1,3 @@
 Hello, World!
-This is deployed by JenkinsFile Auto Build with Auto Trigger
+This application is running in Docker container.
+It has been deployed by DockerFile and JenkinsFile.
