@@ -17,7 +17,7 @@ pipeline{
 					echo 'Application Docker image built Successfully!'
 
 					echo 'Deleting Old Docker container...'
-					sh "docker rm -f $(docker ps -aq -f name=tomcatwebapp)"
+					sh "docker rm -f \$(docker ps -aq -f name=tomcatwebapp)"
 					echo 'Old Docker container Deleted successfully'
 
 					echo 'Starting Docker Container'
