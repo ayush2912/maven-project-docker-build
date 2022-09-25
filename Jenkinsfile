@@ -3,6 +3,9 @@ pipeline{
 
 	tools{
 		maven 'LOCAL_MAVEN'
+                tools {
+                dockerTool 'puneet'
+               }
 	}
 
 	parameters{
