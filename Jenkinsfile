@@ -3,6 +3,7 @@ pipeline{
 
 	tools{
 		maven 'LOCAL_MAVEN'
+                docker 'Installation root'
 	}
 
 	parameters{
